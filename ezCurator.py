@@ -31,7 +31,7 @@ print('<p>Created by <a href="steemit.com/@jrswab">J. R. Swab</a></p>')
 print('<p>Below are the post with more than 1,000 words in the ' + sys.argv[1] + ' "hot" feed.</p>')
 
 # grab Steem URI
-q = Query(limit=20, tag=str(sys.argv[1]))
+q = Query(limit=60, tag=str(sys.argv[1]))
 for blog in Discussions_by_hot(q):
     post = str(blog)
     splitPost = post.split()
