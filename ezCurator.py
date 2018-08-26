@@ -23,7 +23,7 @@ def words(content):
     return len(str(content).split())
 
 # open file to start HTML
-with open('top.html') as t:
+with open('config/top.html') as t:
   print(t.read())
 
 print('<h2>The Curators\' Helper</h2>')
@@ -57,5 +57,5 @@ for blog in Discussions_by_hot(q):
         print('</div>')
 
 # open file to end HTML
-with open('bottom.html') as b:
+with open('config/bottom.html') as b:
   print(b.read())
