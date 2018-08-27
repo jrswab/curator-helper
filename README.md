@@ -7,7 +7,7 @@
 
 Make sure to replace `technology` with the topic of your choice.
 
-### Future Plans:
+## Future Plans:
 * Web app version:
   * Choose topic via radio button
   * Vote via SteemConnect
