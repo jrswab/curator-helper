@@ -41,7 +41,7 @@ def htmlOut(uri, uriShow):
 
 def getPosts():
     # grab Steem URI
-    q = Query(limit=10, tag=str(sys.argv[1]))
+    q = Query(limit=20, tag=str(sys.argv[1]))
     for blog in Discussions_by_hot(q):
         post = str(blog)
         splitPost = post.split()
@@ -49,9 +49,10 @@ def getPosts():
         uri = uriBase[:-1]
 
         if len(uriBase[:-1]) > 50:
-            uriShow = str(uriBase[:45]) + '...'
+            uriShow = str(uriBase[:47]) + '...'
         else:
-            uriShow = uriBase[:-1]
+            uriLen = len(uriBase[:-1])
+            uriShow = uriBase[:-1] + '&nbsp;'*(50 - uriLen)
         # write HTML card data
         htmlOut(uri, uriShow)
 
@@ -70,6 +71,7 @@ with open('top.html', 'r') as top:
                     + sys.argv[1] + ' "hot" feed.</p>\n')
             # Get Steem data
             getPosts()
+
             # write bottom of HTML document
             for botLine in bottom:
                 curated.write(botLine)
