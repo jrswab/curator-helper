@@ -14,3 +14,9 @@ Make sure to replace `technology` with the topic of your choice.
   * Add choice to use Steemit or Busy
 * General:
   * Faster content word count
+
+## To Dependencies:
+- java and JDK (for grammar checker)
+- pip packages
+  - [language-check](https://pypi.org/project/language-check/)
+  - [beem](https://beem.readthedocs.io/en/latest/installation.html)
