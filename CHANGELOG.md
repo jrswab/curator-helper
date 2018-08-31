@@ -5,6 +5,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+- n/a
 
 ## [1.1.0](https://gitlab.com/jrswab/curator-helper/commit/88b564eb13c6cf82dc52ef19243ac4dcb18c7bcc) - 2018-08-31
 ### Added
