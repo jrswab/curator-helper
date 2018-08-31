@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## [1.1.0](https://gitlab.com/jrswab/curator-helper/commit/88b564eb13c6cf82dc52ef19243ac4dcb18c7bcc)
+## [1.1.0](https://gitlab.com/jrswab/curator-helper/commit/88b564eb13c6cf82dc52ef19243ac4dcb18c7bcc) - 2018-08-31
 ### Added
 - Header images to cards
 - The [Beem](https://github.com/holgern/beem/tree/master/beem) Comment module to read post content
