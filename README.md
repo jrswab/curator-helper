@@ -7,6 +7,11 @@
 
 Make sure to replace `technology` with the topic of your choice.
 
+### If running on your own Linux Server:
+Make sure to install the pip modules in the following manner:
+- `sudo -H pip3 install language_tools`
+- `sudo -H pip3 install beem`
+
 ## Future Plans:
 * Web app version:
   * Choose topic via radio button

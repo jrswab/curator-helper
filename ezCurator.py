@@ -4,6 +4,12 @@ import re, sys, language_check
 from beem.comment import Comment
 from beem.discussions import Query, Discussions_by_hot
 
+# set command arugments to variables.
+topicChoice = str(sys.argv[1])
+wordChoice = int(sys.argv[2])
+grammarChoice = int(sys.argv[3])
+searchChoice = int(sys.argv[4])
+
 def grammarCheck(baseText):
     # use regex to remone HTML and Markdown syntax
     text = syntaxStrip(baseText)
@@ -12,10 +18,16 @@ def grammarCheck(baseText):
     errors = tool.check(text)
     # count sentences to check against errors
     sent = text.split('.')
-    errorPerc = (len(errors)/words(text))*100
+
+    try:
+        errorPerc = (len(errors)/words(text))*100
+    except ZeroDivisionError:
+        errorPerc = 0
+
     return round(errorPerc, 2)
 
 def syntaxStrip(baseText):
+    # needed to remove markdown and HTML for more accurate word count
     return re.sub(r'(<.*>)|\#+|(\].*\))|\[|\*+|\>', '', baseText)
 
 def words(content):
@@ -26,41 +38,41 @@ def words(content):
 def htmlOut(uri, uriShow, content, published, body):
     # Image to replace if none found in post
     notFound = "https://media.giphy.com/media/8L0Pky6C83SzkzU55a/giphy.gif"
+    # get grammar check
+    errorScore = grammarCheck(body)
     # Output data with HTML
-    if words(content) >= 1000:
-        images = []
-        imgReg = r"http\S*.(jpg|png|jpeg|gif)"
-        
-        # get grammar check
-        errorScore = grammarCheck(body)
+    if words(content) >= wordChoice:
+        if errorScore <= grammarChoice:
+            images = []
+            imgReg = r"http\S*.(jpg|png|jpeg|gif)"
 
-        for text in content.split():
-            if ".jpg" in text or ".png" in text:
-                try:
-                    image = re.search(imgReg, text, re.IGNORECASE)
-                    images.append(str(image.group()))
-                except AttributeError:
-                    images.append(notFound)
+            for text in content.split():
+                if ".jpg" in text or ".png" in text:
+                    try:
+                        image = re.search(imgReg, text, re.IGNORECASE)
+                        images.append(str(image.group()))
+                    except AttributeError:
+                        images.append(notFound)
 
-        try:
-            topImage = images[0]
-        except IndexError:
-            topImage = notFound
+            try:
+                topImage = images[0]
+            except IndexError:
+                topImage = notFound
 
-        curated.write('\n<div class="card mb-3">\n<div class="card-body">')
-        curated.write('\n<img class="card-img-top" style="max-width:500px" src="'+ 
-                topImage +'" alt="Card image cap">')
-        curated.write('\n<p><strong><a href="https://steemit.com/' + uri + '">' + uriShow + 
-                '</a></strong></p>')
-        curated.write('\n<p>Contains about ' + str(words(content)) + 
-                ' words with about  ' + str(errorScore) + 
-                '% of the text containing grammatical errors.</p>')
-        curated.write('\n<p>Published on ' + str(published)[:-15] + '</p>')
-        curated.write('\n</div>\n</div>\n')
+            curated.write('\n<div class="card mb-3">\n<div class="card-body">')
+            curated.write('\n<img class="card-img-top" style="max-width:500px" src="'+ 
+                    topImage +'" alt="Card image cap">')
+            curated.write('\n<p><strong><a href="https://steemit.com/' + uri + '">' + uriShow + 
+                    '</a></strong></p>')
+            curated.write('\n<p>Contains about ' + str(words(content)) + 
+                    ' words with possibly  ' + str(errorScore) + 
+                    '% of the text containing grammatical errors.</p>')
+            curated.write('\n<p>Published on ' + str(published)[:-15] + '</p>')
+            curated.write('\n</div>\n</div>\n')
 
 def getPosts():
     # grab Steem URI
-    q = Query(limit=50, tag=str(sys.argv[1]))
+    q = Query(limit=searchChoice, tag=topicChoice)
     for entry in Discussions_by_hot(q):
         # Get uri
         postUri = str(entry)
