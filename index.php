@@ -29,7 +29,7 @@
 <div id="contain" class="d-inline-flex flex-column justify-content-center 
 	align-items-center">
 	<h1 class="text-center">The Curator's Helper</h1>
-	<span class="text-center">For non-English posts please set Grammor to "None".</span>
+	<span class="text-center">For non-English posts please set Grammar to "None".</span>
 	<hr />
 	<form action="#" method="get" onclick="run()" class="container">
 		<div class="row">
@@ -144,7 +144,7 @@
 				  <input type="radio" id="customRadio3" name="topic"
 				  class="custom-control-input" value="christianity">
 				  <label class="custom-control-label"
-					  for="customRadio3">Chirstianity</label>
+					  for="customRadio3">Christianity</label>
 				</div>
 				<div class="custom-control custom-radio">
 				  <input type="radio" id="customRadio4" name="topic"
