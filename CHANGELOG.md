@@ -4,10 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [1.2](https://gitlab.com/jrswab/curator-helper/commit/29f03d82402b33aa4b63d26515c01736c72be56c)
 ### Added
 - Web app at [jrswab.cloud/curator/](https://jrswab.cloud/curator/)
 - Gammar percentage as another meteric for curators.
+- Ability to choose the number of posts to look over
 
 ### Changed
 - Updated README.md
